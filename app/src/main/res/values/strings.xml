@@ -12,4 +12,7 @@
     <string name="user_not_found">That user does not exist</string>
     <string name="no_connection">There is no network connection</string>
     <string name="username_finder">Username finder</string>
+    <string name="tabbed_followers">Tabbed Followers</string>
+    <string name="user">user</string>
+    <string name="users_followers">\'s followers</string>
 </resources>

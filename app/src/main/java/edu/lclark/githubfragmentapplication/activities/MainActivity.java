@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityFragm
 
     @Bind(R.id.activity_main_framelayout)
     FrameLayout mFrameLayout;
+
+    public static final String ARG_USER = "MainActivity.User";
 
     FloatingActionButton fab;
 
@@ -44,10 +47,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityFragm
                 finish();
             }
         });
-
         loadInitailScreen();
-
-
     }
 
     public void loadInitailScreen() {
@@ -96,6 +96,16 @@ public class MainActivity extends AppCompatActivity implements MainActivityFragm
         transaction.replace(R.id.activity_main_framelayout, MainActivityFragment.newInstance(user));
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onTabbedFollowerButtonClicked(GithubUser user) {
+        fab.show();
+        Intent intent = new Intent(this, TabsAndViewPagerActivity.class);
+        intent.putExtra(ARG_USER, user);
+        Log.d(MainActivity.class.getSimpleName(), "Activity should start");
+        startActivity(intent);
+
     }
 
 
